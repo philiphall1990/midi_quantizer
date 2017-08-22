@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7c10c695-b124-4eb7-815c-388bed3de876}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>Midi.py</StartupFile>
+    <StartupFile>__main__.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -19,9 +19,14 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Midi.py" />
+    <Compile Include="read_midi_in.py">
+      <Publish>True</Publish>
+    </Compile>
     <Compile Include="PrepareForLearning.py" />
     <Compile Include="record.py" />
+    <Compile Include="__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="__main__.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
