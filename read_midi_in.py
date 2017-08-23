@@ -10,9 +10,7 @@ class readMidiIn:
      if str(LIVE_OR_FILE) == "1":
          record.Devices.getDevice
      else: 
-         
-     # self.normalize_times(messagesAsTimes)
-
+         pass
     def actOnInput(self, messagesAsTimes):
         if len(messagesAsTimes) is 0:
             messagesAsTimes.append(time.time())
