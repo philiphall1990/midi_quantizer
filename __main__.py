@@ -5,7 +5,7 @@ import sys
 def main(args=None):
     """The main routine."""
     rm = read_midi_in.readMidiIn()
-    r = record.Record()
+    r = record.Devices()
     r.getDevice()
 
 if __name__ == "__main__":

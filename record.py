@@ -4,8 +4,7 @@ import mido
 import asyncore
 import itertools
 
-
-class Record():
+class Devices:
     def __init__(self):
         self.toFile = []
         self.file = []
@@ -14,7 +13,8 @@ class Record():
         for msg in indev:
             self.toFile.append(msg)
 
-    def getDevice(self):
+
+    def getDevice(self = None):
         devs = mido.get_input_names()
         for i in range(0,len(devs)):
             print(str(i) + str(devs[i]))
