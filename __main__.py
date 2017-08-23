@@ -1,6 +1,6 @@
 import sys
 import record
-import read_midi_in
+import
 import sys
 def main(args=None):
     """The main routine."""
