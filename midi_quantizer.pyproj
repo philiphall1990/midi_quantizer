@@ -19,6 +19,12 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FileIO.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="kNN.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="midi_file.py">
       <SubType>Code</SubType>
     </Compile>

@@ -2,7 +2,6 @@ from itertools import count
 from mido.ports import BaseInput
 import threading
 import mido
-import asyncore
 import itertools
 
 class Devices:
@@ -17,8 +16,6 @@ class Devices:
             if not msg == None:
                 self.file.append(msg)
                 print(str(bytes(msg)))
-
-                0
 
     def getDevice(self = None):
         devs = mido.get_input_names()

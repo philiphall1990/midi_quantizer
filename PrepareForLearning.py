@@ -3,14 +3,19 @@ from mido import Message, MidiTrack
 
 class PrepareForLearning:
 
-    def trackIn(self, track):
-        trackTimes = []
-        trackNotes = []
-        path = "C:\\Users\\root\\Dropbox\\4731.mid"
+    def trackIn(self, path):
+        liveNoteDict = {}
+        notetimes = []
+
+       
         trck = mido.MidiFile(path)
+        abs_time = 0
         for msg in trck:
+            abs_time += msg.time
+            msg_last = msg
             if msg.type == 'note_on':
-                trackTimes.append(msg.time)
+                liveNoteDict.update({msg.note : abs_time})
             if msg.type == 'note_off':
-                trackTimes[len(trackTimes) -1] = msg.time - trackTimes[len(trackTimes)-1]
-                trackNotes.append(msg.note)
+                 notetimes.append((abs_time - liveNoteDict.pop(msg.note,0)))
+                 
+        print(notetimes)
