@@ -1,3 +1,4 @@
+import kNN
 import mido
 from mido import Message, MidiTrack
 
@@ -17,5 +18,5 @@ class PrepareForLearning:
                 liveNoteDict.update({msg.note : abs_time})
             if msg.type == 'note_off':
                  notetimes.append((abs_time - liveNoteDict.pop(msg.note,0)))
-                 
-        print(notetimes)
+
+            kNN.ski()
