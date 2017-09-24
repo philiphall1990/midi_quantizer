@@ -33,4 +33,4 @@ class doKMeans:
             print(i//8)
             print(i%8)
             out[i//8][i%8] = a[i]
-              
+             

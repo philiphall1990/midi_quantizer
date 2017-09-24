@@ -1,6 +1,5 @@
 import sys
 import record
-import
 import sys
 def main(args=None):
     """The main routine."""

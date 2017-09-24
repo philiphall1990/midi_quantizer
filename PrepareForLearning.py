@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 class PrepareForLearning:
 
     def __init__(self):
-        self.plot = plt.show(block=False)
+        plt.ion()
         self.notetimes = []
 
     def trackIn(self, path):
@@ -27,6 +27,7 @@ class PrepareForLearning:
                      if type(temp) == type(5.0):
                         if not (temp > (np.copy(self.notetimes).mean()*100)):
                             self.notetimes.append(temp) 
+            plt.scatter()
                     
         except Exception as e:
             print(str.format("{0}-{1}",path,str(e)))
