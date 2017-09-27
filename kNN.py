@@ -9,7 +9,7 @@ import FileIO as fIO
 class doKMeans:
 
     def begin(self,inarray):
-        inarray = self.make2d(inarray)
+        
         for i in range(2,20):
             kd = KMeans(n_clusters=i)
             kd.fit(inarray)

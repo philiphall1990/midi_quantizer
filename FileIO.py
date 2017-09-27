@@ -1,5 +1,6 @@
 from pandas.io import pickle
 from os import walk, path
+import os
 from joblib import Parallel, delayed
 import multiprocessing
 from os.path import join
@@ -11,6 +12,7 @@ class FileIO:
     """description of class"""
     def __init__(self, **kwargs):
         self.arr = []
+        self.nparr = np.empty((0,8),dtype=list)
         self.inst = pl.PrepareForLearning()
 
 
@@ -23,19 +25,18 @@ class FileIO:
 
     def getfilefromuser(self):
         inputs = []
-        for (dirpath, dirnames, filenames) in walk("C:\\Users\\root\\Downloads\\130000_Pop_Rock_Classical_Videogame_EDM_MIDI_Archive[6_19_15]\\130000_Pop_Rock_Classical_Videogame_EDM_MIDI_Archive[6_19_15]\\"):
+        curdir = os.path.join(os.path.realpath(os.curdir),"\\midi\\")
+        if not os.path.exists(curdir):
+            curdir = os.path.join(os.)
+        for (dirpath, dirnames, filenames) in walk(os.path.join(curdir,"\\midi\\")):
             for f in [x for x in filenames if str(x).endswith("mid")]:
                 #inputs.append(join(dirpath,f))
                 inputs.append(join(dirpath,f))
-        self.arr = self.arr + Parallel(-1,verbose=5)(delayed(self.inst.trackIn)(p) for p in inputs)
-        nw = []
-        for y in self.arr:
-            for a in y:
-                if type(a) == type(0.89):
-                    nw.append(a)
-        self.arr = nw
-        if type(self.arr[0]) != type(0.4):
-            self.arr = [x for x in self.arr]
+        for p in inputs:
+           self.arr = self.arr + self.inst.trackIn(p)
+        #self.arr = self.arr + Parallel(-1,verbose=5)(delayed(self.inst.trackIn)(p) for p in inputs)
+        self.nparr = np.asarray(self.arr,dtype=list)
+        self.nparr = self.nparr.reshape(len(self.arr)//8, 8)
         self.saveWork(self.arr,'rawmidi',20)
         result = kNN.doKMeans().begin(self.arr)
         
