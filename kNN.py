@@ -12,6 +12,7 @@ class doKMeans:
         
         for i in range(2,20):
             kd = KMeans(n_clusters=i)
+            inarray = inarray.reshape((len(inarray//8),8))
             kd.fit(inarray)
         
             plt.plot(inarray)
