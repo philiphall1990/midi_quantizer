@@ -6,3 +6,6 @@ Software / Dev ideas
 3)autoconfiguration software (via machine learning) 
 4 )OS Dev
 5) BIOS
+https://github.com/martinmarinov/TempestSDR
+https://roomstyler.com/3dplanner
+	
