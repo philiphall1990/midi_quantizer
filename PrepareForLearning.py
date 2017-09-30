@@ -8,15 +8,17 @@ from matplotlib import pyplot as plt
 
 class PrepareForLearning:
 
-    def __init__(self):
-        self.notetimes = np.empty((0,0))      
+    def __init__(self):        
+        self.notetimes = np.empty((0,0))
         plt.ion()
         
     def trackIn(self, path):
         self.notetimes = np.empty((0,0))
         liveNoteDict = {}
+        print("working on file:")
         try:
             mid_file = mido.MidiFile(path)
+            print(str(mid_file))
             abs_time = 0
             for trck in mid_file.tracks:
                 for msg in trck:                   
@@ -27,7 +29,8 @@ class PrepareForLearning:
                         abs_time += msg.time
                         temp = float(abs_time - liveNoteDict.pop(msg.note,0))
                         if not (temp > (self.notetimes.mean()*100)):
-                            self.notetimes = np.append(self.notetimes,[temp])                    
+                                   self.notetimes = np.append(self.notetimes,[temp])
+                print("success!")
         except Exception as e:
-            print(str.format("{0}-{1}",path,str(e)))
+            print(str.format("Failed! {0}",str(e)))
         return self.notetimes

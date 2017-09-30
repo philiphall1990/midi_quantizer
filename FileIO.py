@@ -26,11 +26,11 @@ class FileIO:
 
     def getfilefromuser(self):
         inputs = []
-        try:
-            self.arr = read_pickle(FileIO._PATH.format('rawmidi',0))
-        except: 
-            print("no pickle file...will encode midi from files")
-        if self.arr is None:
+        #try:
+        #    self.arr = read_pickle(FileIO._PATH.format('rawmidi',0))
+        #except: 
+        #    print("no pickle file...will encode midi from files")
+        if len(self.arr) == 0:
             curdir = os.path.abspath(os.path.join(os.path.realpath(os.curdir),"\\midi\\"))
             if not os.path.exists(curdir):
                 curdir = os.path.abspath("C:\\Users\\root\\Source\\Repos\\midi_quantizer\\midi")
@@ -40,7 +40,11 @@ class FileIO:
                     inputs.append(os.path.join(dirpath,f))
             for p in inputs:
                 self.arr = np.append(self.arr, self.inst.trackIn(p))
-            #self.arr = self.arr + Parallel(-1,verbose=5)(delayed(self.inst.trackIn)(p) for p in inputs)
-            self.saveWork(self.arr,'rawmidi',20)
+            #self.arr = np.add(self.arr,Parallel(-1,verbose=5)(delayed(self.inst.trackIn)(p) for p in inputs))
+            #self.saveWork(self.arr,'rawmidi',20)
+        
+        temparr = self.arr
+        print("original values:\n\n\n\n\n")
+        print(np.resize(temparr,(len(temparr)//8,8)))
         result = kNN.doKMeans().begin(self.arr)
         
