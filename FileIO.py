@@ -9,14 +9,15 @@ import numpy as np
 import kNN
 
 class FileIO:
+    _PATH = "C:\\Users\\root\\Desktop\\pickle-{0}-{1}"
     """description of class"""
     def __init__(self, **kwargs):
-        self._PATH = "C:\\Users\\root\\Desktop\\pickle-{0}-{1}"
+        
         self.arr = np.empty((0,0))
         self.inst = pl.PrepareForLearning()
 
 
-    def saveWork(self, obj, quick_descr, ntries, _path=self._PATH):
+    def saveWork(self, obj, quick_descr, ntries, _path=_PATH):
         for i in range(0,ntries):
             _path = path.abspath(_path.format(quick_descr,i))
             if not path.exists(_path):
@@ -26,7 +27,7 @@ class FileIO:
     def getfilefromuser(self):
         inputs = []
         try:
-            self.arr = read_pickle(self._PATH.format(rawmidi,0))
+            self.arr = read_pickle(FileIO._PATH.format('rawmidi',0))
         except: 
             print("no pickle file...will encode midi from files")
         if self.arr is None:
@@ -38,7 +39,7 @@ class FileIO:
                     #inputs.append(join(dirpath,f))
                     inputs.append(os.path.join(dirpath,f))
             for p in inputs:
-               self.arr = np.append(self.arr, self.inst.trackIn(p))
+                self.arr = np.append(self.arr, self.inst.trackIn(p))
             #self.arr = self.arr + Parallel(-1,verbose=5)(delayed(self.inst.trackIn)(p) for p in inputs)
             self.saveWork(self.arr,'rawmidi',20)
         result = kNN.doKMeans().begin(self.arr)

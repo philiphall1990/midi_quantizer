@@ -14,5 +14,5 @@ class readMidiIn:
             return record.Devices.getDevice()
          else:
             fio = FileIO.FileIO()
-            return fio.getfilefromuser()
+         return fio.getfilefromuser()
         

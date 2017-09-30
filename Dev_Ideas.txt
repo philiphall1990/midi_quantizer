@@ -8,4 +8,3 @@ Software / Dev ideas
 5) BIOS
 https://github.com/martinmarinov/TempestSDR
 https://roomstyler.com/3dplanner
-	
