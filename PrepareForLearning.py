@@ -28,9 +28,13 @@ class PrepareForLearning:
                     if msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity == 0):
                         abs_time += msg.time
                         temp = float(abs_time - liveNoteDict.pop(msg.note,0))
-                        if not (temp > (self.notetimes.mean()*100)):
-                                   self.notetimes = np.append(self.notetimes,[temp])
+                        self.notetimes = np.append(self.notetimes,[temp])
+
                 print("success!")
         except Exception as e:
             print(str.format("Failed! {0}",str(e)))
+        if len(self.notetimes) == 0:
+            return None
+        while len(self.notetimes) % 8 != 0:
+            self.notetimes = np.delete(self.notetimes,len(self.notetimes)-1)
         return self.notetimes
