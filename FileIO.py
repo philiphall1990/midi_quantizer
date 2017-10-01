@@ -9,7 +9,7 @@ import numpy as np
 import kNN
 
 class FileIO:
-    _PATH = "C:\\Users\\root\\Desktop\\pickle-{0}-{1}"
+    _PATH = "C:\\pickle-{0}-{1}"
     """description of class"""
     def __init__(self, **kwargs):
         self.inst = pl.PrepareForLearning()
@@ -17,9 +17,10 @@ class FileIO:
 
     def saveWork(self, obj, quick_descr, ntries, _path=_PATH):
         for i in range(0,ntries):
-            _path = path.abspath(_path.format(quick_descr,i))
+            _path = path.abspath(FileIO._PATH.format(quick_descr,i))
             if not path.exists(_path):
                 pickle.to_pickle(obj,_path)
+                return None
 
 
     def getfilefromuser(self):
