@@ -8,21 +8,21 @@ import FileIO as fIO
 class doKMeans:
 
     def begin(self,inarray):
-        inarray = self.make2d(inarray)
-        inarray = normalize(inarray)
-        inarray = self.make2d(inarray)
-        for i in range(2,20):
-            kd = KMeans(n_clusters=i)
-            temparray = inarray
-            result = kd.fit_transform(temparray)
-            params = kd.get_params()
-            print('\n\n\n======================================\n\n\n',sep='@')
-            print(result)
-            print(params)
+        #inarray = self.make2d(inarray)
+        #inarray = normalize(inarray)
+        #inarray = self.make2d(inarray)
+        i = 8
+        kd = KMeans(n_clusters=i)
+        temparray = inarray
+        result = kd.fit_transform(temparray)
+        params = kd.get_params()
+        print('\n\n\n======================================\n\n\n')
+        print(result)
+        print(params)
             
             
             
-            fIO.FileIO().saveWork((result,params),'kmeansfit_{0}clusters'.format(i),2)
+        fIO.FileIO().saveWork((result,params,kd),'kmeansfit_fulldata'.format(i),2)
         input("press any key to exit...")
 
     def make2d(self,arr):

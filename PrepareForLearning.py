@@ -8,10 +8,11 @@ from matplotlib import pyplot as plt
 
 class PrepareForLearning:
 
+
     def __init__(self):        
         self.notetimes = np.empty((0,0))
-        plt.ion()
         
+
     def trackIn(self, path):
         self.notetimes = np.empty((0,0))
         liveNoteDict = {}

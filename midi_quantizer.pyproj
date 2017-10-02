@@ -5,8 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7c10c695-b124-4eb7-815c-388bed3de876}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>main.py</StartupFile>
-    <SearchPath>'.'</SearchPath>
+    <StartupFile>__main__.py</StartupFile>
+    <SearchPath>..\midi_quantizer</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
@@ -22,9 +22,6 @@
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="plot.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="FileIO.py">
       <SubType>Code</SubType>
     </Compile>

@@ -4,7 +4,7 @@ from os import walk, path
 import os
 from joblib import Parallel, delayed
 import multiprocessing
-import PrepareForLearning as pl
+import PrepareForLearning
 import numpy as np
 import kNN
 
@@ -12,8 +12,7 @@ class FileIO:
     _PATH = "C:\\pickle-{0}-{1}"
     """description of class"""
     def __init__(self, **kwargs):
-        self.inst = pl.PrepareForLearning()
-
+        self.inst = None
 
     def saveWork(self, obj, quick_descr, ntries, _path=_PATH):
         for i in range(0,ntries):
@@ -22,14 +21,18 @@ class FileIO:
                 pickle.to_pickle(obj,_path)
                 return None
 
+    def loadWork(self, descr,_path):
+        fns = os.listdir(os.path.dirname(_path))
+        refobj = []
+        for f in fns:
+            if descr in str(f):
+                refobj.append(read_pickle(os.path.join(os.path.dirname(_path),f)))
+        return refobj
+  
 
     def getfilefromuser(self):
+        self.inst = PrepareForLearning.PrepareForLearning()
         inputs = []
-        #try:
-        #    self.arr = read_pickle(FileIO._PATH.format('rawmidi',0))
-        #except: 
-        #    print("no pickle file...will encode midi from files")
-        
         curdir = os.path.abspath(os.path.join(os.path.realpath(os.curdir),"\\midi\\"))
         if not os.path.exists(curdir):
             curdir = os.path.abspath("C:\\Users\\root\\Source\\Repos\\midi_quantizer\\midiFiles")
@@ -49,4 +52,6 @@ class FileIO:
         print("original values:\n\n\n\n\n")
         print(np.resize(temparr,(len(temparr)//8,8)))
         result = kNN.doKMeans().begin(arr)
-        
+
+
+FileIO().loadWork('kmeans',"C:\\Users\\root\\Desktop")
