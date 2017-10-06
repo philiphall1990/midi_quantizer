@@ -11,7 +11,6 @@ from pandas import read_pickle
 class readMidiIn:
     def read():
         fio = FileIO.FileIO()
-        results = read_pickle("C:\\normalized_midi")
-        kNN.doKMeans().begin(results)
-        return fio.getfilefromuser()
+        fio.getfilefromuser()
+        return input("Press any key to exit.")
         
